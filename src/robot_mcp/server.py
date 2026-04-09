@@ -12,7 +12,13 @@ mcp = FastMCP(
         "Use individual command tools for single operations, or use "
         "robot_chain to efficiently pipeline multiple commands in a single "
         "ROBOT invocation where ontology objects pass in-memory between steps. "
-        "Common workflow: merge -> reason -> annotate -> convert."
+        "Common workflow: merge -> reason -> annotate -> convert. "
+        "\n\n"
+        "IMPORTANT: Before using a flag you are not certain about, verify it "
+        "exists by running the command with --help first. For example, use "
+        'robot_chain with [{"command": "<command>", "help": true}] or use '
+        'an individual tool with extra_args: ["--help"]. This avoids '
+        "hallucinating flags that don't exist in the user's ROBOT version."
     ),
 )
 

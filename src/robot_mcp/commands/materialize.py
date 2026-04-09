@@ -20,7 +20,7 @@ async def robot_materialize(
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: list[str] | None = None,  # use ["--help"] to list available flags
 ) -> dict[str, Any]:
     """Materialize inferred superclass relationships using a reasoner.
 

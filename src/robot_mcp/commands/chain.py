@@ -43,6 +43,9 @@ async def robot_chain(
             {"command": "annotate", "ontology_iri": "https://example.org/my.owl"},
             {"command": "convert", "format": "ofn", "output": "result.owl"}
         ]
+
+    Tip: to discover available flags for a command, pass ``"help": true``
+    in a step, e.g. ``[{"command": "merge", "help": true}]``.
     """
     args = build_global_args(
         catalog=catalog,
