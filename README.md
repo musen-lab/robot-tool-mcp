@@ -173,6 +173,27 @@ All tools support these global options:
 | `working_directory` | Working directory for file paths |
 | `extra_args` | Escape hatch for rarely-used flags (list of strings) |
 
+## How to Contribute
+
+1. Fork the repository
+2. Create a feature branch from `main`:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Install dev dependencies:
+   ```bash
+   uv sync --dev
+   ```
+4. Make your changes and ensure code quality:
+   ```bash
+   uv run ruff format src/
+   uv run ruff check src/
+   ```
+5. Commit your changes and push to your fork
+6. Open a Pull Request against `main`
+
+The `main` branch is protected — all changes must go through a PR.
+
 ## License
 
 BSD 2-Clause License
