@@ -175,4 +175,4 @@ All tools support these global options:
 
 ## License
 
-MIT
+BSD 2-Clause License
