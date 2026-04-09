@@ -1027,7 +1027,7 @@ wheels = [
 ]
 
 [[package]]
-name = "robot-ontology-mcp"
+name = "robot-tool-mcp"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "robot-ontology-mcp"
+name = "robot-tool-mcp"
 version = "0.1.0"
 description = "MCP server wrapping the ROBOT ontology CLI tool"
 requires-python = ">=3.11"

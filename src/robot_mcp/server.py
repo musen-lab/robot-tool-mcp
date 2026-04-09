@@ -26,5 +26,5 @@ register_all(mcp)
 
 
 def main() -> None:
-    """Entry point for ``uvx robot-ontology-mcp``."""
+    """Entry point for ``uvx robot-tool-mcp``."""
     mcp.run()
