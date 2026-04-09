@@ -18,7 +18,7 @@ async def robot_validate_profile(
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,  # use ["--help"] to list available flags
+    extra_args: list[str] | None = None,
 ) -> dict[str, Any]:
     """Check ontology conformance to an OWL 2 profile.
 

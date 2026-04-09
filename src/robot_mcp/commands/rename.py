@@ -22,7 +22,7 @@ async def robot_rename(
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,  # use ["--help"] to list available flags
+    extra_args: list[str] | None = None,
 ) -> dict[str, Any]:
     """Rename entity IRIs via full replacement or prefix-based renaming.
 

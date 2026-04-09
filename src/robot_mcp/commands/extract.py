@@ -29,7 +29,7 @@ async def robot_extract(
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,  # use ["--help"] to list available flags
+    extra_args: list[str] | None = None,
 ) -> dict[str, Any]:
     """Extract a subset module from a larger ontology.
 

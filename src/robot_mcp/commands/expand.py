@@ -20,7 +20,7 @@ async def robot_expand(
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,  # use ["--help"] to list available flags
+    extra_args: list[str] | None = None,
 ) -> dict[str, Any]:
     """Expand shortcut annotation properties (macros) into OWL axioms.
 
