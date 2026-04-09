@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "robot-mcp"
+version = "0.1.0"
+description = "MCP server wrapping the ROBOT ontology CLI tool"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.0.0",
+]
+
+[project.scripts]
+robot-mcp = "robot_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/robot_mcp"]
