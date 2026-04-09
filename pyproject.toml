@@ -16,3 +16,8 @@ robot-mcp = "robot_mcp.server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/robot_mcp"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.10",
+]

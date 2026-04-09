@@ -43,8 +43,12 @@ async def robot_extract(
     Specify seed terms via ``term`` (list of CURIEs/IRIs) or ``term_file``.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("extract")
@@ -72,7 +76,9 @@ async def robot_extract(
     if intermediates:
         args.extend(["--intermediates", intermediates])
     if copy_ontology_annotations is not None:
-        args.extend(["--copy-ontology-annotations", str(copy_ontology_annotations).lower()])
+        args.extend(
+            ["--copy-ontology-annotations", str(copy_ontology_annotations).lower()]
+        )
     if annotate_with_source is not None:
         args.extend(["--annotate-with-source", str(annotate_with_source).lower()])
     if sources:

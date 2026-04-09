@@ -29,8 +29,12 @@ async def robot_reduce(
     those redundancies to keep the ontology minimal.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("reduce")
@@ -38,7 +42,9 @@ async def robot_reduce(
         args.extend(["--input", input])
     args.extend(["--reasoner", reasoner])
     if preserve_annotated_axioms is not None:
-        args.extend(["--preserve-annotated-axioms", str(preserve_annotated_axioms).lower()])
+        args.extend(
+            ["--preserve-annotated-axioms", str(preserve_annotated_axioms).lower()]
+        )
     if named_classes_only is not None:
         args.extend(["--named-classes-only", str(named_classes_only).lower()])
     if output:

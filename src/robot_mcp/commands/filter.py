@@ -37,8 +37,12 @@ async def robot_filter(
     controls whether axioms require ALL or ANY objects in the target set.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("filter")

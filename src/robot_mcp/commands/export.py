@@ -33,8 +33,12 @@ async def robot_export(
     (classes, individuals, properties).  Use ``sort`` to order by column.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("export")

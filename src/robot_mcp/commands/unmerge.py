@@ -25,8 +25,12 @@ async def robot_unmerge(
     axioms from the remaining inputs are subtracted from it.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("unmerge")

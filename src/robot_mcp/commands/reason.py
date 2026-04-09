@@ -37,8 +37,12 @@ async def robot_reason(
     (e.g. ``"SubClass EquivalentClass DisjointClasses"``).
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("reason")
@@ -52,15 +56,24 @@ async def robot_reason(
     if equivalent_classes_allowed:
         args.extend(["--equivalent-classes-allowed", equivalent_classes_allowed])
     if exclude_duplicate_axioms is not None:
-        args.extend(["--exclude-duplicate-axioms", str(exclude_duplicate_axioms).lower()])
+        args.extend(
+            ["--exclude-duplicate-axioms", str(exclude_duplicate_axioms).lower()]
+        )
     if exclude_owl_thing is not None:
         args.extend(["--exclude-owl-thing", str(exclude_owl_thing).lower()])
     if exclude_tautologies:
         args.extend(["--exclude-tautologies", exclude_tautologies])
     if annotate_inferred_axioms is not None:
-        args.extend(["--annotate-inferred-axioms", str(annotate_inferred_axioms).lower()])
+        args.extend(
+            ["--annotate-inferred-axioms", str(annotate_inferred_axioms).lower()]
+        )
     if remove_redundant_subclass_axioms is not None:
-        args.extend(["--remove-redundant-subclass-axioms", str(remove_redundant_subclass_axioms).lower()])
+        args.extend(
+            [
+                "--remove-redundant-subclass-axioms",
+                str(remove_redundant_subclass_axioms).lower(),
+            ]
+        )
     if dump_unsatisfiable:
         args.extend(["--dump-unsatisfiable", dump_unsatisfiable])
     if output:

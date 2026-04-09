@@ -29,8 +29,12 @@ async def robot_expand(
     ``annotate_expansion_axioms`` to mark generated axioms.
     """
     args = build_global_args(
-        catalog=catalog, prefixes=prefixes, add_prefix=add_prefix,
-        noprefixes=noprefixes, verbose=verbose, strict=strict,
+        catalog=catalog,
+        prefixes=prefixes,
+        add_prefix=add_prefix,
+        noprefixes=noprefixes,
+        verbose=verbose,
+        strict=strict,
         xml_entities=xml_entities,
     )
     args.append("expand")
@@ -43,7 +47,9 @@ async def robot_expand(
         for t in no_expand_term:
             args.extend(["--no-expand-term", t])
     if annotate_expansion_axioms is not None:
-        args.extend(["--annotate-expansion-axioms", str(annotate_expansion_axioms).lower()])
+        args.extend(
+            ["--annotate-expansion-axioms", str(annotate_expansion_axioms).lower()]
+        )
     if output:
         args.extend(["--output", output])
     if extra_args:
