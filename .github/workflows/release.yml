@@ -68,12 +68,12 @@ jobs:
 
           Install from PyPI:
           ```bash
-          pip install robot-mcp
+          pip install robot-ontology-mcp
           ```
 
           Or with uvx:
           ```bash
-          uvx robot-mcp
+          uvx robot-ontology-mcp
           ```
 
           ### Usage

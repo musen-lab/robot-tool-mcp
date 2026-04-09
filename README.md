@@ -1,4 +1,4 @@
-# robot-mcp
+# robot-ontology-mcp
 
 MCP server wrapping the [ROBOT](https://robot.obolibrary.org/) command-line tool for OWL ontology editing.
 
@@ -17,7 +17,7 @@ See [ROBOT installation](https://robot.obolibrary.org/) for setup instructions.
 ### With uvx (recommended)
 
 ```bash
-uvx --from git+https://github.com/<owner>/robot-mcp robot-mcp
+uvx robot-ontology-mcp
 ```
 
 ### From source
@@ -37,7 +37,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
   "mcpServers": {
     "robot-mcp": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/<owner>/robot-mcp", "robot-mcp"]
+      "args": ["robot-ontology-mcp"]
     }
   }
 }
@@ -50,7 +50,7 @@ Or for local development:
   "mcpServers": {
     "robot-mcp": {
       "command": "uv",
-      "args": ["run", "--directory", "/path/to/robot-mcp", "robot-mcp"]
+      "args": ["run", "--directory", "/path/to/robot-ontology-mcp", "robot-mcp"]
     }
   }
 }
