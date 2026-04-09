@@ -12,8 +12,12 @@ from robot_mcp.commands.reason import robot_reason
 from robot_mcp.commands.reduce import robot_reduce
 from robot_mcp.commands.relax import robot_relax
 from robot_mcp.commands.remove import robot_remove
+from robot_mcp.commands.query import robot_query
 from robot_mcp.commands.rename import robot_rename
+from robot_mcp.commands.report import robot_report
 from robot_mcp.commands.unmerge import robot_unmerge
+from robot_mcp.commands.validate_profile import robot_validate_profile
+from robot_mcp.commands.verify import robot_verify
 
 
 def register_all(mcp: FastMCP) -> None:
@@ -34,3 +38,9 @@ def register_all(mcp: FastMCP) -> None:
     mcp.tool(robot_filter)
     mcp.tool(robot_remove)
     mcp.tool(robot_rename)
+
+    # Query and verification
+    mcp.tool(robot_query)
+    mcp.tool(robot_verify)
+    mcp.tool(robot_report)
+    mcp.tool(robot_validate_profile)
