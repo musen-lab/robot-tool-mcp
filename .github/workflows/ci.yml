@@ -20,7 +20,7 @@ jobs:
         python-version: '3.12'
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v7
 
     - name: Install dependencies
       run: uv sync --dev
@@ -44,7 +44,7 @@ jobs:
         python-version: '3.12'
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v7
 
     - name: Build package
       run: uv build
@@ -80,7 +80,7 @@ jobs:
       run: bandit -r src/ -f json -o bandit-report.json || true
 
     - name: Upload bandit report
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: always()
       with:
         name: bandit-report
