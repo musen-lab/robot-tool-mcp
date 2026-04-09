@@ -2,8 +2,9 @@
 
 from fastmcp import FastMCP
 
+from robot_mcp.commands.chain import robot_chain
+
 
 def register_all(mcp: FastMCP) -> None:
     """Register every ROBOT command tool on the given server."""
-    # Will be populated as command modules are added.
-    pass
+    mcp.tool(robot_chain)
