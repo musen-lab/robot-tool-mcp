@@ -65,6 +65,14 @@ class TestMerge:
         assert "true" in args
 
     @patch("robot_mcp.commands.merge.run_robot", new_callable=AsyncMock)
+    def test_string_input_normalized(self, mock_run: AsyncMock) -> None:
+        """A single string for input is normalized to a list."""
+        mock_run.return_value = {"success": True}
+        asyncio.run(robot_merge(input="a.owl", output="merged.owl"))
+        args = mock_run.call_args[0][0]
+        assert args == ["merge", "--input", "a.owl", "--output", "merged.owl"]
+
+    @patch("robot_mcp.commands.merge.run_robot", new_callable=AsyncMock)
     def test_global_options(self, mock_run: AsyncMock) -> None:
         """Global options precede the merge command."""
         mock_run.return_value = {"success": True}

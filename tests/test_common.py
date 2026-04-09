@@ -1,6 +1,6 @@
 """Tests for shared argument building helpers."""
 
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import build_global_args, ensure_list
 
 
 class TestBuildGlobalArgs:
@@ -72,3 +72,32 @@ class TestBuildGlobalArgs:
             noprefixes=False, verbose=False, strict=False, xml_entities=False
         )
         assert result == []
+
+    def test_add_prefix_string_normalized(self) -> None:
+        """A single string for add_prefix is normalized to a list."""
+        result = build_global_args(add_prefix="ex: http://example.org/")
+        assert result == ["--add-prefix", "ex: http://example.org/"]
+
+
+class TestEnsureList:
+    """Tests for ensure_list string-to-list normalization."""
+
+    def test_none_returns_none(self) -> None:
+        """None stays None."""
+        assert ensure_list(None) is None
+
+    def test_string_becomes_single_element_list(self) -> None:
+        """A bare string is wrapped in a list."""
+        assert ensure_list("hello") == ["hello"]
+
+    def test_list_unchanged(self) -> None:
+        """A list passes through unchanged."""
+        assert ensure_list(["a", "b"]) == ["a", "b"]
+
+    def test_empty_list_unchanged(self) -> None:
+        """An empty list passes through unchanged."""
+        assert ensure_list([]) == []
+
+    def test_empty_string_becomes_list(self) -> None:
+        """An empty string becomes a single-element list."""
+        assert ensure_list("") == [""]

@@ -3,13 +3,13 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_rename(
     input: str | None = None,
     output: str | None = None,
-    mapping: list[str] | None = None,
+    mapping: StrOrList = None,
     mappings: str | None = None,
     prefix_mappings: str | None = None,
     allow_missing_entities: bool | None = None,
@@ -17,12 +17,12 @@ async def robot_rename(
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Rename entity IRIs via full replacement or prefix-based renaming.
 
@@ -31,6 +31,9 @@ async def robot_rename(
     TSV file of old→new mappings.  Use ``prefix_mappings`` for bulk
     prefix replacement.
     """
+    mapping = ensure_list(mapping)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

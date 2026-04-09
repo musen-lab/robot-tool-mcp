@@ -3,12 +3,12 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_merge(
-    input: list[str] | None = None,
-    input_iri: list[str] | None = None,
+    input: StrOrList = None,
+    input_iri: StrOrList = None,
     inputs: str | None = None,
     output: str | None = None,
     collapse_import_closure: bool | None = None,
@@ -18,12 +18,12 @@ async def robot_merge(
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Merge one or more OWL ontology files into a single ontology.
 
@@ -32,6 +32,10 @@ async def robot_merge(
     ``"edit*.owl"``.  By default, import closures are merged and
     ``owl:imports`` statements are removed.
     """
+    input = ensure_list(input)
+    input_iri = ensure_list(input_iri)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

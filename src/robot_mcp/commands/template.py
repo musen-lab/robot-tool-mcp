@@ -3,14 +3,14 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_template(
     input: str | None = None,
     output: str | None = None,
-    template: list[str] | None = None,
-    prefix: list[str] | None = None,
+    template: StrOrList = None,
+    prefix: StrOrList = None,
     ontology_iri: str | None = None,
     merge_before: bool | None = None,
     merge_after: bool | None = None,
@@ -19,12 +19,12 @@ async def robot_template(
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Convert tabular data (CSV/TSV) into OWL ontology format.
 
@@ -33,6 +33,10 @@ async def robot_template(
     Use ``merge_before`` or ``merge_after`` to control how template
     output combines with the input ontology.
     """
+    template = ensure_list(template)
+    prefix = ensure_list(prefix)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

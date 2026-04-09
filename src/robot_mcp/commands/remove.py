@@ -3,31 +3,31 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_remove(
     input: str | None = None,
     output: str | None = None,
-    term: list[str] | None = None,
+    term: StrOrList = None,
     term_file: str | None = None,
-    exclude_term: list[str] | None = None,
+    exclude_term: StrOrList = None,
     exclude_terms: str | None = None,
-    select: list[str] | None = None,
+    select: StrOrList = None,
     axioms: str | None = None,
     signature: bool | None = None,
     trim: bool | None = None,
     preserve_structure: bool | None = None,
-    drop_axiom_annotations: list[str] | None = None,
+    drop_axiom_annotations: StrOrList = None,
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Remove selected axioms from an ontology (inverse of filter).
 
@@ -35,6 +35,12 @@ async def robot_remove(
     ``term_file``.  Use ``select`` to control which related terms are
     included in the removal set (e.g. ``"self descendants"``).
     """
+    term = ensure_list(term)
+    exclude_term = ensure_list(exclude_term)
+    select = ensure_list(select)
+    drop_axiom_annotations = ensure_list(drop_axiom_annotations)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

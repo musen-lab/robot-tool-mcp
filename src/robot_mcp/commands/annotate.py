@@ -3,7 +3,7 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_annotate(
@@ -11,10 +11,10 @@ async def robot_annotate(
     output: str | None = None,
     ontology_iri: str | None = None,
     version_iri: str | None = None,
-    annotation: list[str] | None = None,
-    link_annotation: list[str] | None = None,
-    language_annotation: list[str] | None = None,
-    typed_annotation: list[str] | None = None,
+    annotation: StrOrList = None,
+    link_annotation: StrOrList = None,
+    language_annotation: StrOrList = None,
+    typed_annotation: StrOrList = None,
     annotation_file: str | None = None,
     remove_annotations: bool = False,
     annotate_derived_from: bool | None = None,
@@ -22,12 +22,12 @@ async def robot_annotate(
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Add metadata annotations to an ontology.
 
@@ -37,6 +37,12 @@ async def robot_annotate(
     IRI-valued annotations and ``language_annotation`` for language-tagged
     literals.
     """
+    annotation = ensure_list(annotation)
+    link_annotation = ensure_list(link_annotation)
+    language_annotation = ensure_list(language_annotation)
+    typed_annotation = ensure_list(typed_annotation)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

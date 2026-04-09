@@ -3,23 +3,23 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_verify(
     input: str | None = None,
-    queries: list[str] | None = None,
+    queries: StrOrList = None,
     output_dir: str | None = None,
     fail_on_violation: bool | None = None,
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Check an ontology for rule violations using SPARQL SELECT queries.
 
@@ -27,6 +27,9 @@ async def robot_verify(
     any results, those are violations.  ROBOT exits with a non-zero code
     when violations are found (controllable via ``fail_on_violation``).
     """
+    queries = ensure_list(queries)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

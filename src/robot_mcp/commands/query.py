@@ -3,28 +3,28 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_query(
     input: str | None = None,
     output: str | None = None,
-    query: list[str] | None = None,
-    queries: list[str] | None = None,
+    query: StrOrList = None,
+    queries: StrOrList = None,
     output_dir: str | None = None,
-    update: list[str] | None = None,
+    update: StrOrList = None,
     use_graphs: bool | None = None,
     tdb: bool | None = None,
     format: str | None = None,
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Execute SPARQL queries against an ontology.
 
@@ -36,6 +36,11 @@ async def robot_query(
     Query types: ASK (true/false), SELECT (tabular CSV), CONSTRUCT (RDF).
     Use ``tdb`` for large ontologies to use disk-backed storage.
     """
+    query = ensure_list(query)
+    queries = ensure_list(queries)
+    update = ensure_list(update)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,

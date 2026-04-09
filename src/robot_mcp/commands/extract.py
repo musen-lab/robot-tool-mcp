@@ -3,18 +3,18 @@
 from typing import Any
 
 from robot_mcp._runner import run_robot
-from robot_mcp.commands._common import build_global_args
+from robot_mcp.commands._common import StrOrList, build_global_args, ensure_list
 
 
 async def robot_extract(
     input: str | None = None,
     output: str | None = None,
     method: str = "STAR",
-    term: list[str] | None = None,
+    term: StrOrList = None,
     term_file: str | None = None,
-    upper_term: list[str] | None = None,
-    lower_term: list[str] | None = None,
-    branch_from_term: list[str] | None = None,
+    upper_term: StrOrList = None,
+    lower_term: StrOrList = None,
+    branch_from_term: StrOrList = None,
     imports: str | None = None,
     individuals: str | None = None,
     intermediates: str | None = None,
@@ -24,12 +24,12 @@ async def robot_extract(
     working_directory: str | None = None,
     catalog: str | None = None,
     prefixes: str | None = None,
-    add_prefix: list[str] | None = None,
+    add_prefix: StrOrList = None,
     noprefixes: bool = False,
     verbose: bool = False,
     strict: bool = False,
     xml_entities: bool = False,
-    extra_args: list[str] | None = None,
+    extra_args: StrOrList = None,
 ) -> dict[str, Any]:
     """Extract a subset module from a larger ontology.
 
@@ -42,6 +42,12 @@ async def robot_extract(
 
     Specify seed terms via ``term`` (list of CURIEs/IRIs) or ``term_file``.
     """
+    term = ensure_list(term)
+    upper_term = ensure_list(upper_term)
+    lower_term = ensure_list(lower_term)
+    branch_from_term = ensure_list(branch_from_term)
+    add_prefix = ensure_list(add_prefix)
+    extra_args = ensure_list(extra_args)
     args = build_global_args(
         catalog=catalog,
         prefixes=prefixes,
