@@ -1028,7 +1028,7 @@ wheels = [
 
 [[package]]
 name = "robot-tool-mcp"
-version = "0.1.0"
+version = "1.2.2"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
