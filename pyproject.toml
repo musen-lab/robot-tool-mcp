@@ -27,6 +27,7 @@ dependencies = [
 
 [project.scripts]
 robot-mcp = "robot_mcp.server:main"
+robot-tool-mcp = "robot_mcp.server:main"
 
 [project.urls]
 Homepage = "https://github.com/musen-lab/robot-tool-mcp"
